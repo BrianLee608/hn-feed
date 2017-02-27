@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
-
+import { Header } from './components';
 
 class App extends Component {
   componentWillMount() {
@@ -18,9 +18,7 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-      <View>
-        <Text>Hello</Text>
-      </View>
+        <Header headerText="News Feed" />
       </Provider>
     );
   }
