@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Scene } from 'react-native-router-flux';
-import { FrontPage } from './components';
+import FrontPage from './components/FrontPage';
 
 const RouterComponent = () => {
   return (
