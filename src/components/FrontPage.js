@@ -14,11 +14,8 @@ class FrontPage extends Component {
     });
   }
 
-  componentDidMount() {
-    axios.get('https://hacker-news.firebaseio.com/v0/topstories.json')
-      .then(response => {
-        this.props.loadFeed(response.data);
-      });
+  componentWillMount() {
+    this.props.loadFeed();
   }
 
   render() {
@@ -26,8 +23,6 @@ class FrontPage extends Component {
     console.log(rows);
     return (
       <View>
-        <Text>"It is working!"</Text>
-        <Text>{this.props.itemIds.length}</Text>
         <ListView
           dataSource={rows}
           renderRow={(rowData) => <Card id={rowData} />}

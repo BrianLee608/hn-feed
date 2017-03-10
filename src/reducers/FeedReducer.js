@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'load_feed':
-      return { ...state, itemIds: action.payload };
+      return { ...state, itemIds: action.itemIds };
     default:
       return state;
   }

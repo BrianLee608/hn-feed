@@ -1,10 +1,19 @@
 import axios from 'axios';
 
-export const loadFeed = (data) => {
+export const loadComplete = (response) => {
   return {
     type: 'load_feed',
-    payload: data
+    itemIds: response
   };
+};
+
+export const loadFeed = () => {
+  return function(dispatch) {
+    axios.get('https://hacker-news.firebaseio.com/v0/topstories.json')
+      .then(response => {
+        dispatch(loadComplete(response.data));
+      });
+  }
 };
 
 export const receiveArticleDetails = (item) => {

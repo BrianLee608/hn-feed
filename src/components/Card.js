@@ -1,12 +1,29 @@
-import React from 'react';
-import { View } from 'react-native';
+import axios from 'axios';
+import React, {Component} from 'react';
+import { View , Text} from 'react-native';
 
-const Card = (props) => {
-  return (
-    <View style={styles.containerStyle}>
-      {props.children}
-    </View>
-  );
+class Card extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null
+    }
+  }
+  componentDidMount() {
+    console.log(this.props.id);
+    axios.get(`https://hacker-news.firebaseio.com/v0/item/${this.props.id}.json`)
+      .then(response => {
+        console.log(response);
+        this.setState({data: response.data});
+      });
+  }
+  render() {
+    return (
+      <View style={styles.containerStyle}>
+        <Text>{this.state.data ? this.state.data.title : null}</Text>
+      </View>
+    );
+  }
 };
 
 const styles = {
