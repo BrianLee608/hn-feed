@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { ListView, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { loadFeed } from '../actions';
-import ArticleContainer from './ArticleContainer';
+import Card from './Card';
+
 
 class FrontPage extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class FrontPage extends Component {
         <Text>{this.props.itemIds.length}</Text>
         <ListView
           dataSource={rows}
-          renderRow={(rowData) => <ArticleContainer id={rowData} />}
+          renderRow={(rowData) => <Card id={rowData} />}
           enableEmptySections
         />
       </View>
